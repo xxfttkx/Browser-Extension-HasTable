@@ -8,12 +8,13 @@ import './Popup.css';
 const Popup = () => {
   const [searchKey, setSearchKey] = useState('');
   const [searchValue, setSearchValue] = useState('');
-  const { hashTable, addToHashTable, removeFromHashTable } = useHashTable();
-  const { result, search } = useSearch(searchKey, hashTable);
+  const [result, setResult] = useState('');
+  const { hashTable, addToHashTable, removeFromHashTable, searchFromHashTable } = useHashTable(setResult);
+  
   const [randomItems, setRandomItems] = useState([]);
 
   const handleClickSearch = () => {
-    search();
+    searchFromHashTable(searchKey);
   };
 
   const handleClickAdd = () => {
